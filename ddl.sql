@@ -1,8 +1,5 @@
--- ==========================================
--- SYSTEM OBSŁUGI DYDAKTYKI (PWr Edition)
--- ==========================================
 
--- --- ENUMERACJE ---
+-- Enums
 
 CREATE TYPE stopien_studiow AS ENUM (
     'I - Inżynierskie',
@@ -38,9 +35,9 @@ CREATE TYPE forma_zaliczenia AS ENUM (
     'Zaliczenie'
 );
 
--- ==========================================
--- TABELE GŁÓWNE
--- ==========================================
+
+-- Tabels
+
 
 CREATE TABLE prowadzacy (
     id              SERIAL          PRIMARY KEY,
@@ -126,9 +123,7 @@ CREATE TABLE grupy (
     )
 );
 
--- ==========================================
--- TABELE ŁĄCZĄCE (M:N)
--- ==========================================
+-- Asocjacje
 
 CREATE TABLE grupy_prowadzacy (
     grupa_id        INTEGER     NOT NULL REFERENCES grupy(id)       ON DELETE CASCADE,
@@ -166,9 +161,8 @@ CREATE TABLE studenci_bloki (
     PRIMARY KEY (student_id, blok_id)
 );
 
--- ==========================================
--- INDEKSY
--- ==========================================
+
+
 
 CREATE INDEX idx_sale_budynek          ON sale(budynek_id);
 CREATE INDEX idx_przedmioty_blok       ON przedmioty(blok_id);

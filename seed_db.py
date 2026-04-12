@@ -7,9 +7,9 @@ from datetime import datetime, timedelta
 fake = Faker('pl_PL')
 
 DB_CONFIG = {
-    'dbname': 'registration_system',
+    'dbname': 'ursus',
     'user': 'postgres',
-    'password': '1234',
+    'password': 'root',
     'host': 'localhost',
     'port': '5432'
 }
@@ -99,6 +99,7 @@ def generate_logical_data():
 def seed_database():
     data = generate_logical_data()
 
+    conn = None
     try:
         conn = psycopg2.connect(**DB_CONFIG)
         cursor = conn.cursor()
